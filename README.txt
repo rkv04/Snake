@@ -1,0 +1,1 @@
+g++ main.cpp sector.cpp apple.cpp snake.cpp map.cpp -o snake-app -lsfml-graphics -lsfml-window -lsfml-system && ./snake-app
