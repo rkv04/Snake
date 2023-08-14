@@ -9,12 +9,12 @@ Map::~Map() {
     delete this->snake;
 }
 
-void Map::checkCollisionSnakeApple() {
+bool Map::checkCollisionSnakeApple() {
     Sector *head = this->snake->getHead();
     if (head->getPosX() == this->apple->getPosX() && head->getPosY() == this->apple->getPosY()) {
-        setNewApple();
-        this->snake->grow();
+        return true;
     }
+    return false;
 }
 
 void Map::checkCollisionSnakeWall() {
@@ -35,7 +35,10 @@ void Map::checkCollisionSnakeWall() {
 
 void Map::collisionDetection() {
     this->checkCollisionSnakeWall();
-    this->checkCollisionSnakeApple();
+    if (this->checkCollisionSnakeApple()) {
+        this->createNewApple();
+        this->snake->grow();
+    }
     if (this->snake->checkCollisionHeadBody()) {
         this->createNewSnake();
     }
@@ -76,11 +79,11 @@ void Map::drawFrame(sf::RenderWindow &window) {
     drawGrid(window);
 }
 
-Snake* Map::getShake() {
+Snake* Map::getSnake() {
     return this->snake;
 }
 
-void Map::setNewApple() {
+void Map::createNewApple() {
     float kX = rand() % ((int)Map::WIDTH / (int)Sector::size - 1);
     float kY = rand() % ((int)Map::HEIGHT / (int)Sector::size - 1);
     float posX = Sector::size * kX;

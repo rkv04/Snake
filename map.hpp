@@ -11,16 +11,16 @@ public:
     static constexpr float HEIGHT = Sector::size * 25;
     Map();
     ~Map();
-    void checkCollisionSnakeApple();
+    bool checkCollisionSnakeApple();
     void checkCollisionSnakeWall();
     void collisionDetection();
     void drawSnake(sf::RenderWindow &window);
     void drawApple(sf::RenderWindow &window);
     void drawFrame(sf::RenderWindow &window);
     void drawGrid(sf::RenderWindow &window);
-    Snake* getShake();
+    Snake* getSnake();
     void createNewSnake();
-    void setNewApple();
+    void createNewApple();
     
 
 private:

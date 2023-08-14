@@ -93,3 +93,7 @@ bool Snake::checkCollisionHeadBody() {
     }
     return false;
 }
+
+int Snake::getScore() {
+    return this->body.size() - 3;
+}

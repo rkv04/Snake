@@ -7,16 +7,13 @@ class Snake {
 public:
     Snake(int len);
     ~Snake();
-
     void makeStep();
-
     void setDirMove();
     std::vector<Sector*> getBody();
     Sector* getHead();
-
     void grow();
     bool checkCollisionHeadBody();
-
+    int getScore();
 private:
     enum DirectionMove {UP, LEFT, DOWN, RIGHT};
     DirectionMove curDirMove;

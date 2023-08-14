@@ -25,8 +25,10 @@ int main() {
             }
         }
 
-        map.getShake()->makeStep();
+        map.getSnake()->makeStep();
         map.collisionDetection();
+
+        window.setTitle("Score - " + std::to_string(map.getSnake()->getScore()));
 
         window.clear(backgroungColor);
         map.drawFrame(window);
